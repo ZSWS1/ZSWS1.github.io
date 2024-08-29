@@ -1,11 +1,13 @@
 body {
-    background: rgb(15, 39, 29);
+    background-image: url('https://64.media.tumblr.com/660e1bf2356436a781610bbda1a069bf/tumblr_of4a0oMfkv1vfoqtxo1_1280.gif') ;
     color: rgb(4, 39, 20);
     padding: 10px;
     font-family: arial;
+    font-weight: bold;
+    font-style: italic;
 }
 #all-contents {
-  max-width: 800px;
+  max-width: 1400px;
     margin: auto;
 }
 
@@ -45,7 +47,7 @@ main {
     padding: 10px;
 }
 .sidebar-img {
-    width: 475px;
+    width: 450px;
 }
 .content {
     flex: 1;
