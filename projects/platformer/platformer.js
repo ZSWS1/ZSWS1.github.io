@@ -61,7 +61,7 @@ $(function () {
     createCannon('top', 500, 1000, 50, 50)
     createCannon('left', 300, 750, 15, 15)
     createCannon('top', 350, 2500, 100, 100)
-    createCannon('right', 150, 30000, 1000, 1000)
+  
 
 
 
