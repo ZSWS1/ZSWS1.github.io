@@ -45,7 +45,7 @@ init();
 function init() {
   snake.body = [];
   makeSnakeSquare(10, 10);
-  snake.head = snake.body(0);
+  snake.head = snake.body[0];
   makeApple();
   // TODO 5a: Initialize the interval
   updateInterval = setInterval(update, 100);
@@ -80,9 +80,22 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if (activeKey === KEY.LEFT) {
+  if (activeKey === KEY.LEFT && snake.head.direction != "right") {
     snake.head.direction = "left";
   }
+
+  if (activeKey === KEY.UP && snake.head.direction != "down") {
+    snake.head.direction = "up";
+  }
+
+  if (activeKey === KEY.RIGHT && snake.head.direction != "left") {
+    snake.head.direction = "right";
+  }
+
+  if (activeKey === KEY.DOWN && snake.head.direction != "up") {
+    snake.head.direction = "down";
+  }
+
 
   // FILL IN THE REST
 
@@ -103,9 +116,25 @@ function moveSnake() {
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
 
+  if (snake.head.direction === "left") {
+    snake.head.column = snake.head.column - 1;
+    }
+    
+    if (snake.head.direction === "up") {
+    snake.head.row = snake.head.row - 1;
+    }
+    
+    if (snake.head.direction === "right") {
+    snake.head.column = snake.head.column + 1;
+    }
+    
+    if (snake.head.direction === "down") {
+    snake.head.row = snake.head.row + 1;
+    }
+    repositionSquare(snake.head);
   /* 
   TODO 7: determine the next row and column for the snake's head
-  
+
   HINT: The snake's head will need to move forward 1 square based on the value
   of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
