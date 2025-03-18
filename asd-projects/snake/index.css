@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(81, 139, 81);
 }
 
 #board {
@@ -11,7 +11,7 @@ body {
 }
 
 #score, #highScore {
-  color: white;
+  color: rgb(241, 144, 144);
 }
 
 .snake, .apple {
@@ -23,15 +23,15 @@ body {
 }
 
 .snake {
-  background-color: green;
+  background-color: rgb(85, 52, 25);
   z-index: 2;
 }
 
 #snake-head {
-  background-color: darkgreen;
+  background-color: rgb(80, 37, 17);
 }
 
 .apple {
-  background-color: red;
+  background-color: rgb(150, 12, 12);
   z-index: 1;
 }
