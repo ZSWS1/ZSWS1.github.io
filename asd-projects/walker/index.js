@@ -1,8 +1,8 @@
 /* global $, sessionStorage */
 
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
-function runProgram(){
+
+function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -11,23 +11,22 @@ function runProgram(){
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   var KEY = {
-LEFT: 37,
-UP: 38,
-RIGHT: 39,
-DOWN: 40,
-  }
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40,
+  };
   // Game Item Objects
-var walker = {
-xPos: 0,
-yPos: 0,
-xSpd: 0,
-ySpd: 0,
-
-}
+  var walker = {
+    xPos: 0,
+    yPos: 0,
+    xSpd: 0,
+    ySpd: 0,
+  };
 
   // one-time setup
-  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
+  $(document).on("keydown", handleKeyDown); // change 'eventType' to the type of event you want to handle
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -38,34 +37,32 @@ ySpd: 0,
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
-
+    repositionGameItem();
+    redrawGameItem();
   }
-  
+
   /* 
   Called in response to events.
   */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
-    console.log("Left Pressed")
+      console.log("Left Pressed");
     }
-    console.log(event.key)
+    console.log(event.key);
   }
-
-    
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-function repositionGameItem() {
+  function repositionGameItem() {
+    walker.X = walker.X + walker.xSpd;
+    walker.Y = walker.Y + walker.ySpd;
+  }
 
-
-}
-  
-function redrawGameItem() {
-
-
-}
+  function redrawGameItem() {
+    $("#walker").css("left", walker.X);
+    $("#walker").css("top", walker.Y);
+  }
 
   function endGame() {
     // stop the interval timer
@@ -74,5 +71,4 @@ function redrawGameItem() {
     // turn off event handlers
     $(document).off();
   }
-  
 }
