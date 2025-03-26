@@ -64,13 +64,13 @@ function runProgram() {
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   function repositionGameItem() {
-    walker.X = walker.X + walker.xSpd;
-    walker.Y = walker.Y + walker.ySpd;
+    walker.xPos = walker.xPos + walker.xSpd;
+    walker.yPos = walker.yPos + walker.ySpd;
   }
 
   function redrawGameItem() {
-    $("#walker").css("left", walker.X);
-    $("#walker").css("top", walker.Y);
+    $("#walker").css("left", walker.xPos);
+    $("#walker").css("top", walker.yPos);
   }
 
   function endGame() {
