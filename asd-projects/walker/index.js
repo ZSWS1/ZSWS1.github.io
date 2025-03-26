@@ -46,7 +46,16 @@ function runProgram() {
   */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
-      console.log("Left Pressed");
+      walker.xSpd = -5
+    }
+    if (event.which === KEY.UP) {
+      walker.ySpd = -5
+    }
+    if (event.which === KEY.RIGHT) {
+      walker.xSpd = 5
+    }
+    if (event.which === KEY.DOWN) {
+      walker.ySpd = 5
     }
     console.log(event.key);
   }
