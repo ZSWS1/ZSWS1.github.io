@@ -27,7 +27,7 @@ function runProgram() {
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on("keydown", handleKeyDown); // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,7 @@ function runProgram() {
   */
   function newFrame() {
     repositionGameItem();
+    wallCollision();
     redrawGameItem();
   }
 
@@ -59,6 +60,13 @@ function runProgram() {
     }
     console.log(event.key);
   }
+  
+  function handleKeyUp(event) {
+    if (event.which === KEY.LEFT || event.which === KEY.UP || event.which === KEY.RIGHT || event.which === KEY.DOWN) {
+      walker.xSpd = 0;
+      walker.ySpd = 0;
+    }
+    }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -72,6 +80,25 @@ function runProgram() {
     $("#walker").css("left", walker.xPos);
     $("#walker").css("top", walker.yPos);
   }
+
+  function wallCollision() {
+    var bWidth = $("#board").width()
+    var bHeight = $("#board").height()
+    if (walker.xPos < 0) {
+      walker.xPos = 0;
+      }
+      if (walker.xPos > bWidth) {
+      walker.xPos = bWidth;
+      }
+      if (walker.yPos < 0) {
+      walker.yPos = 0;
+      }
+      if (walker.yPos > bHeight) {
+      walker.yPos = bHeight;
+      }
+  }
+
+
 
   function endGame() {
     // stop the interval timer
