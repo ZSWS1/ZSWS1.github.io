@@ -82,8 +82,8 @@ function runProgram() {
   }
 
   function wallCollision() {
-    var bWidth = $("#board").width()
-    var bHeight = $("#board").height()
+    var bWidth = $("#board").width() - 50;
+    var bHeight = $("#board").height() - 50;
     if (walker.xPos < 0) {
       walker.xPos = 0;
       }
